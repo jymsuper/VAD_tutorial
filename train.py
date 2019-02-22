@@ -66,7 +66,7 @@ def main():
     n_epochs = 15 # How many epochs?
     end = start + n_epochs # Last epoch
 
-    lr = 1e-1 # Initial learning rate
+    lr = 1e-2 # Initial learning rate
     wd = 1e-4 # Weight decay (L2 penalty)
     optimizer_type = 'sgd' # ex) sgd, adam, adagrad
 
@@ -274,7 +274,7 @@ def visualize_the_losses(train_loss, valid_loss):
     
     plt.xlabel('epochs')
     plt.ylabel('loss')
-    plt.ylim(0, 3.5) # consistent scale
+    plt.ylim(0, 0.2) # consistent scale
     plt.xlim(0, len(train_loss)+1) # consistent scale
     plt.grid(True)
     plt.legend()
