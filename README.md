@@ -10,7 +10,20 @@ numpy 1.15.4
 cPickle 1.71  
 sklearn 0.20.2  
 
+## * DB
+원거리 음성대화 로봇과제 2차년도 수집 DB
+- SNS단문 낭독 음성 DB (ETRI 낭독체)
+- 원거리, 무잡음 음성, 1m 거리, 0도 방향, 16kHz, 16bits  
 
+위의 DB를 이용하여 추출한 multi-resolution cochleagram (MRCG) feature를 업로드하였습니다.
+
+### 1. 훈련 DB
+10000개 파일, 100개 폴더(100명 화자)  
+feat_MRCG_nfilt96 - train
+
+### 2. 등록 및 테스트 DB
+20개 파일, 10개 폴더(10명 화자)  
+feat_MRCG_nfilt96 - test
 
 ## 사용법
 ### 1. 훈련
