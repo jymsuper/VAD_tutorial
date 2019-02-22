@@ -10,19 +10,7 @@ import configure as c
 from DB_reader import read_DB_structure
 from utils import calc_global_mean_std
 
-# For loader
-def read_MRCG(feat_path):
-    with open(feat_path, 'rb') as f:
-        feat_and_label = pickle.load(f, encoding='latin1') 
-    feature = feat_and_label['feat'] # size : (n_frames, dim=40)
-    label = feat_and_label['vad_result']
-    
-    if len(feature)!=len(label):
-        feature = feature[0:len(label)]
-    
-    return feature, label
-
-class TruncatedInputfromMFB(object):
+class TruncatedInputfromMRCG(object):
     def __init__(self, input_per_file=1):
         super(TruncatedInputfromMFB, self).__init__()
         self.input_per_file = input_per_file
@@ -48,35 +36,13 @@ class TruncatedInputfromMFB(object):
         # output size : (1, n_win=40, dim=40) => need to remove first dimension for DNN input
         return np.array(network_inputs), labels[j]
 
-class truncatedinputfromMFB_test(object):
-    """
-    input size - feat: (#T, dim), label:(#T,1)
-    output size - feat:(#T-n_win,n_win,dim), label:(#T-n_win,)
-    """
-    def __init__(self, input_per_file=1):
-        super(truncatedinputfromMFB_test, self).__init__()
-        self.input_per_file = input_per_file
-    
-    def __call__(self, frames_features, labels):
-        network_inputs = []
-        network_targets = []
-        num_frames = len(frames_features)
-        
-        for i in range(self.input_per_file):
-            for j in range(c.NUM_PREVIOUS_FRAME, num_frames - c.NUM_NEXT_FRAME):
-                frames_slice = frames_features[j - c.NUM_PREVIOUS_FRAME:j + c.NUM_NEXT_FRAME]
-                # network_inputs.append(np.reshape(frames_slice, (32, 20, 3)))
-                network_inputs.append(frames_slice)
-                network_targets.append(labels[j])
-        return np.array(network_inputs), np.array(network_targets).squeeze(1)
-
-class truncatedinputfromMFB_test_one_utt(object):
+class TruncatedInputfromMRCGtest(object):
     """
     input size - feat: (#T, dim), label:(#T,1)
     output size - feat:(#T ,n_win,dim), label:(#T,)
     """
     def __init__(self, input_per_file=1):
-        super(truncatedinputfromMFB_test_one_utt, self).__init__()
+        super(TruncatedInputfromMRCGtest, self).__init__()
         self.input_per_file = input_per_file
     
     def __call__(self, frames_features, labels):
@@ -117,7 +83,7 @@ class ToTensorInput(object):
             
             return ten_feature, label
 
-class totensor_DNN_input_test(object):
+class ToTensorInputTest(object):
     """Convert ndarrays in sample to Tensors."""
     def __call__(self, np_feature, label):
         """
