@@ -3,12 +3,12 @@
 LG전자 서초R&D캠퍼스 강의 - voice activity detection (VAD) 튜토리얼
 
 ## 필요 환경
-python 2.7  
+python 3.5+  
 pytorch 1.0.0  
 pandas 0.23.4  
-numpy 1.15.4  
-cPickle 1.71  
-sklearn 0.20.2  
+numpy 1.13.3  
+pickle 4.0  
+matplotlib 2.1.0  
 
 ## * DB
 원거리 음성대화 로봇과제 2차년도 수집 DB
@@ -21,7 +21,7 @@ sklearn 0.20.2
 10000개 파일, 100개 폴더(100명 화자)  
 feat_MRCG_nfilt96 - train
 
-### 2. 등록 및 테스트 DB
+### 2. 테스트 DB
 20개 파일, 10개 폴더(10명 화자)  
 feat_MRCG_nfilt96 - test
 
