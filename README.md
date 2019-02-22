@@ -21,7 +21,7 @@ matplotlib 2.1.0
 10000개 파일, 100개 폴더(100명 화자)  
 feat_MRCG_nfilt96 - train
 
-### 2. 등록 및 테스트 DB
+### 2. 테스트 DB
 20개 파일, 10개 폴더(10명 화자)  
 feat_MRCG_nfilt96 - test
 
