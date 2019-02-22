@@ -1,4 +1,4 @@
-# VAD_tutorial [미완성]
+# VAD_tutorial
 
 LG전자 서초R&D캠퍼스 강의 - voice activity detection (VAD) 튜토리얼
 
