@@ -10,6 +10,7 @@ Output : 1) Make DB structure using pd.DataFrame which has 3 columns (file id, f
 import logging
 import os
 from glob import glob
+#import glob2 # for python2
 
 import librosa
 import numpy as np
@@ -27,11 +28,13 @@ pd.set_option('max_colwidth', 100)
 def find_wavs(directory, pattern='**/*.wav'):
     """Recursively finds all files matching the pattern."""
     return glob(os.path.join(directory, pattern), recursive=True)
-
+    #return glob2.glob(os.path.join(directory, pattern)) # for python2
+    
 def find_feats(directory, pattern='**/*.p'):
     """Recursively finds all files matching the pattern."""
     return glob(os.path.join(directory, pattern), recursive=True)
-
+    #return glob2.glob(os.path.join(directory, pattern)) # for python2
+    
 def read_audio(filename, sample_rate=SAMPLE_RATE):
     audio, sr = librosa.load(filename, sr=sample_rate, mono=True)
     audio = audio.flatten()

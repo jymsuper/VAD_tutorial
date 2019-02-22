@@ -1,8 +1,8 @@
 import numpy as np
 from sklearn.metrics import roc_auc_score, roc_curve
 import os
+import pickle
 import configure as c
-from VAD_Dataset import read_MFB
 
 def eer(label,pred):
     FAR, TPR, threshold = roc_curve(label, pred, pos_label=1)
@@ -10,6 +10,18 @@ def eer(label,pred):
     EER = FAR[np.nanargmin(np.absolute((MR - FAR)))]
     return FAR, MR, EER
 
+# For loader
+def read_MRCG(feat_path):
+    with open(feat_path, 'rb') as f:
+        feat_and_label = pickle.load(f, encoding='latin1') 
+    feature = feat_and_label['feat'] # size : (n_frames, dim=40)
+    label = feat_and_label['vad_result']
+    
+    if len(feature)!=len(label):
+        feature = feature[0:len(label)]
+    
+    return feature, label
+    
 def global_feature_normalize(feature, train_mean, train_std):
     mu = train_mean
     sigma = train_std
@@ -27,7 +39,7 @@ def train_mean_std(train_DB):
     for i in range(n_files):
         filename = train_DB['filename'][i]
         label_path = train_DB['label_path'][i]
-        inputs, targets = read_MFB(filename, label_path) # input shape : (n_frames, n_dim)
+        inputs, targets = read_MRCG(filename, label_path) # input shape : (n_frames, n_dim)
         temp_n_frames = len(inputs) # number of frames
         train_mean += np.sum(inputs, axis=0, keepdims=1) # shape : (1, n_dim)
         n_frames += temp_n_frames
@@ -36,7 +48,7 @@ def train_mean_std(train_DB):
     for i in range(n_files):
         filename = train_DB['filename'][i]
         label_path = train_DB['label_path'][i]
-        inputs, targets = read_MFB(filename, label_path) # input shape : (n_frames, n_dim)
+        inputs, targets = read_MRCG(filename, label_path) # input shape : (n_frames, n_dim)
         deviation = np.sum((inputs - train_mean)**2, axis=0, keepdims=1) # shape : (1, n_dim)
         train_std += deviation
     train_std = train_std/(n_frames-1)
