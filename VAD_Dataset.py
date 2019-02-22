@@ -1,13 +1,13 @@
-import numpy as np
-import os
 import torch
-import cPickle as pickle
-#import pickle # For python3 
-import scipy.io
+#import cPickle as pickle
 import torch.utils.data as data
 import torchvision.transforms as transforms
+import os
+import pickle # For python3 
+import numpy as np
+import scipy.io
 import configure as c
-from DB_wav_reader import read_DB_structure
+from DB_reader import read_DB_structure
 
 def convert_wav_to_feat_name(filename, mode, feat_type):
     """
@@ -47,10 +47,9 @@ def convert_wav_to_feat_name(filename, mode, feat_type):
 # For loader
 def read_MFB(feat_path, label_path):
     with open(feat_path, 'rb') as f:
-        feat_and_label = pickle.load(f) 
+        feat_and_label = pickle.load(f, encoding='latin1') 
     feature = feat_and_label['feat'] # size : (n_frames, dim=40)
-    if 'kaist_10h' in label_path:
-        label_path = label_path.replace('_ch01','')
+    
     label = scipy.io.loadmat(label_path)
     label = label['vad_result'] # size : (n_frames, 1)
     # feature and label should be same length! (change feature length)

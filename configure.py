@@ -1,25 +1,17 @@
-# yh computer
 import os
 
-TRAIN_WAVROOT_DIR = '/home/dudans/Desktop/DB/robot_VAD_DB/'
-TRAIN_DATAROOT_DIR = '/home/dudans/Desktop/DB/robot_feat/dist_train_MRCG_nfilt96'
-#TRAIN_DATAROOT_DIR = '/home/dudans/Desktop/DB/robot_feat/dist_train_logfbank_nfilt40'
+# Wave path
+TRAIN_WAV_DIR = '/home/admin/Desktop/read_25h_2/train'
+DEV_WAV_DIR = '/home/admin/Desktop/read_25h_2/dev'
+TEST_WAV_DIR = 'test_wavs'
 
-#TEST_DATAROOT_DIR = '/data/DB/Speaker_robot_test_DB/3M0D/kaist_10h2w'
-#TEST_DATAROOT_DIR = '/data/DB/Speaker_robot_test_DB/1M0D/kaist_10h3c'
-#TEST_DATAROOT_DIR = '/data/DB/Speaker_robot_test_DB/SRC/kaist_10h3c'
-#TEST_DATAROOT_DIR = '/data/DB/Speaker_robot_test_DB/1M0D/kaist_10h_refmotor_snr103c'
-TEST_WAVROOT_DIR = '/home/dudans/Desktop/DB/robot_VAD_DB/kaist_10h_DB/1M0D/kaist_10h_ssuljeon1_snr103c'
-TEST_DATAROOT_DIR = '/home/dudans/Desktop/DB/robot_feat/test_1M0D_ssuljeon1_snr103c_MRCG_nfilt96'
-#TEST_DATAROOT_DIR = '/data/DB/Speaker_robot_test_DB/3M0D/kaist_10h_ssuljeon1_snr103c'
+# Feature path
+TRAIN_FEAT_DIR = 'feat_MRCG_nfilt96/train'
+TEST_FEAT_DIR = 'feat_MRCG_nfilt96/test'
 
-FEAT_DIR = '/home/dudans/Desktop/DB'
-#FEAT_DIR = '/home/administrator/Desktop/Speaker_recognition_robot'
-
-LABEL_DIR = '/home/dudans/Desktop/DB/sohn_result'
+LABEL_DIR = 'sohn_result'
 
 NUM_PREVIOUS_FRAME = 20 #30
-#NUM_PREVIOUS_FRAME = 13
 NUM_NEXT_FRAME = 20 #10
 
 NUM_FRAMES = NUM_PREVIOUS_FRAME + NUM_NEXT_FRAME
