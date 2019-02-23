@@ -8,7 +8,7 @@ pytorch 1.0.0
 pandas 0.23.4  
 numpy 1.13.3  
 pickle 4.0  
-matplotlib 2.1.0
+matplotlib 2.1.0  
 sklearn 0.20.2
 
 ## * DB
