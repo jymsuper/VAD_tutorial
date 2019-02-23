@@ -11,22 +11,23 @@ pickle 4.0
 matplotlib 2.1.0  
 sklearn 0.20.2
 
-## * DB
+## DB
 아래의 과제를 통해 수집된 DB를 이용 
 - No. 10063424, '실내용 음성대화 로봇을 위한 원거리 음성인식 기술 및 멀티 태스크 대화처리 기술 개발'
 - 2차년도 수집 DB
 
 DB 정보
 - SNS단문 낭독 음성 DB (ETRI 낭독체)
-- 원거리, 무잡음 음성, 1m 거리, 0도 방향, 16kHz, 16bits  
+- 1m 거리의 무잡음 음성, 0도 방향
+- 16kHz, 16bits   
 
 위의 DB를 이용하여 추출한 multi-resolution cochleagram (MRCG) feature를 업로드하였습니다.
 
-### 1. 훈련 DB
+### * 훈련 DB
 10000개 파일, 100개 폴더(100명 화자)  
 feat_MRCG_nfilt96 - train
 
-### 2. 테스트 DB
+### * 테스트 DB
 20개 파일, 10개 폴더(10명 화자)  
 feat_MRCG_nfilt96 - test
 
