@@ -13,7 +13,7 @@ from DB_reader import read_DB_structure
 from model.model import DNN
 
 from utils import get_global_mean_std, read_MRCG
-from VAD_Dataset import VAD_Dataset, VAD_Compose, TruncatedInputfromMFB, ToTensorInput
+from VAD_Dataset import VAD_Dataset, VAD_Compose, TruncatedInputfromMRCG, ToTensorInput
 import matplotlib.pyplot as plt
 
 def load_dataset(val_ratio):
@@ -28,7 +28,7 @@ def load_dataset(val_ratio):
     file_loader = read_MRCG # numpy array:(n_frames, n_dims)
      
     transform = VAD_Compose([
-        TruncatedInputfromMFB(), # numpy array:(1, n_frames, n_dims)
+        TruncatedInputfromMRCG(), # numpy array:(1, n_frames, n_dims)
         ToTensorInput() # torch tensor:(n_dims*n_frames)
     ])
     #transform_T = ToTensorDevInput()
