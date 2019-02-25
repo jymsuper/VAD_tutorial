@@ -12,7 +12,7 @@ from utils import calc_global_mean_std
 
 class TruncatedInputfromMRCG(object):
     def __init__(self, input_per_file=1):
-        super(TruncatedInputfromMFB, self).__init__()
+        super(TruncatedInputfromMRCG, self).__init__()
         self.input_per_file = input_per_file
     
     def __call__(self, frames_features, labels):
@@ -171,7 +171,7 @@ class VAD_Dataset(data.Dataset):
 def main():
     train_DB = read_DB_structure(c.TRAIN_DATAROOT_DIR)
     transform = transforms.Compose([
-        truncatedinputfromMFB(),
+        TruncatedInputfromMRCG(),
         totensor_DNN_input()
     ])
     file_loader = read_MFB
