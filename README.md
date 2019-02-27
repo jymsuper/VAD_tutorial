@@ -1,8 +1,7 @@
 # VAD_tutorial
 
-LG전자 서초R&D캠퍼스 강의 - voice activity detection (VAD) 튜토리얼
 
-## 필요 환경
+## Requirements
 python 3.5+  
 pytorch 1.0.0  
 pandas 0.23.4  
@@ -11,34 +10,35 @@ pickle 4.0
 matplotlib 2.1.0  
 sklearn 0.20.2
 
-## DB
-아래의 과제를 통해 수집된 DB를 이용 
-- No. 10063424, '실내용 음성대화 로봇을 위한 원거리 음성인식 기술 및 멀티 태스크 대화처리 기술 개발'
-- 2차년도 수집 DB
+## Datasets
+We used the dataset collected through the following task.
+- No. 10063424, 'development of distant speech recognition and multi-task dialog processing technologies for in-door conversational robots'
 
-DB 정보
-- SNS단문 낭독 음성 DB (ETRI 낭독체)
-- 1m 거리의 무잡음 음성, 0도 방향
-- 16kHz, 16bits   
+Specification
+- Korean read speech corpus (ETRI read speech)
+- Clean speech at a distance of 1m and a direction of 0 degrees
+- 16kHz, 16bits  
 
-위의 DB를 이용하여 추출한 multi-resolution cochleagram (MRCG) feature를 업로드하였습니다.
+We uploaded multi-resolution cochleagram (MRCG) features extracted from the above dataset. 
+[python based MRCG feature extraction toolkit](https://github.com/zouxinghao/MRCG) is used.
 
-### * 훈련 DB
-10000개 파일, 100개 폴더(100명 화자)  
-feat_MRCG_nfilt96 - train
+### * Train
+10000 utterances, 100 folders (100 speakers)  
+Size : 4.4GB
+```feat_MRCG_nfilt96 - train```
 
-### * 테스트 DB
-20개 파일, 10개 폴더(10명 화자)  
-feat_MRCG_nfilt96 - test
+### * Test
+20 utterances, 10 folders (10 speakers)  
+Size : 18MB  
+```feat_MRCG_nfilt96 - test```
 
-## 사용법
-### 1. 훈련
-train.py  
+## Usage
+### 1. Training
+```python train.py```  
 
-### 2. 테스트
-test.py  
+### 2. Testing
+```python test.py```  
 
 
-
-## 문의
-dudans@kaist.ac.kr
+## Author
+Youngmoon Jung (dudans@kaist.ac.kr) at KAIST, South Korea
