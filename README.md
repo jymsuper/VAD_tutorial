@@ -19,7 +19,7 @@ Specification
 - Clean speech at a distance of 1m and a direction of 0 degrees
 - 16kHz, 16bits  
 
-We uploaded multi-resolution cochleagram (MRCG) features extracted from the above dataset. 
+We uploaded multi-resolution cochleagram (MRCG) features extracted from the above dataset.  
 [python based MRCG feature extraction toolkit](https://github.com/zouxinghao/MRCG) is used.
 
 ### * Train
