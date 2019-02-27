@@ -24,7 +24,7 @@ We uploaded multi-resolution cochleagram (MRCG) features extracted from the abov
 
 ### * Train
 10000 utterances, 100 folders (100 speakers)  
-Size : 4.4GB
+Size : 4.4GB  
 ```feat_MRCG_nfilt96 - train```
 
 ### * Test
