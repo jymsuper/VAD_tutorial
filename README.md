@@ -1,6 +1,7 @@
 # VAD_tutorial
-A pytorch implementation of full-connected DNN based voice activity detection (VAD).
-All the features for training and testing are uploaded.
+A pytorch implementation of full-connected DNN based voice activity detection (VAD).  
+All the features for training and testing are uploaded.  
+Korean manual is included ("190225_LG-AI_VAD.pdf").
 
 ## Requirements
 python 3.5+  
